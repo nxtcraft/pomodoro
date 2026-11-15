@@ -80,6 +80,7 @@ footer{text-align:center;padding:1rem;color:#444;font-size:.78rem;border-top:1px
 </style>
 
 <link rel="stylesheet" id="nc-dark" href="/assets/nc-dark.css">
+<script>function ncEsc(s){return String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"})[c])}</script>
 </head>
 <body>
 <nav>
@@ -263,7 +264,7 @@ function renderTasks() {
   list.innerHTML = tasks.map(t => `
     <div class="task-item${t.done?' done':''}">
       <input type="checkbox" ${t.done?'checked':''} onchange="toggleTask(${t.id})">
-      <span>${t.text}</span>
+      <span>${ncEsc(t.text)}</span>
       <button class="del" onclick="deleteTask(${t.id})">✕</button>
     </div>`).join('');
 }
